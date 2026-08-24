@@ -1,36 +1,333 @@
-body {
-    background: #111;
-    color: white;
-    text-align: center;
-    font-family: Arial, sans-serif;
+* {
+    box-sizing: border-box;
 }
 
-.box {
-    width: 400px;
-    height: 300px;
-    margin: 50px auto;
-    border: 3px solid white;
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #050010;
+    color: white;
+}
+
+.scene {
+    width: 100vw;
+    height: 100vh;
     position: relative;
     overflow: hidden;
+    background:
+        radial-gradient(circle at center, #301060 0%, #090018 45%, #000 100%);
 }
 
-.ball {
-    width: 50px;
-    height: 50px;
-    background: red;
-    border-radius: 50%;
+/* Animated stars */
+
+.scene::before {
+    content: "";
     position: absolute;
-    left: 175px;
-    bottom: 0;
-    animation: bounce 1s infinite alternate ease-in-out;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+    background-size: 80px 80px, 130px 130px;
+    background-position: 20px 30px, 60px 80px;
+    animation: stars 5s linear infinite;
+    opacity: 0.5;
 }
 
-@keyframes bounce {
+@keyframes stars {
     from {
-        bottom: 0;
+        transform: translateY(0);
     }
 
     to {
-        bottom: 250px;
+        transform: translateY(80px);
     }
+}
+
+/* Title */
+
+.title {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+.title h1 {
+    margin: 0;
+    font-size: 38px;
+    letter-spacing: 6px;
+    text-shadow: 0 0 15px #9b4dff;
+}
+
+.title p {
+    margin-top: 8px;
+    letter-spacing: 5px;
+}
+
+/* Fighter */
+
+.fighter {
+    position: absolute;
+    width: 220px;
+    height: 420px;
+    left: 50%;
+    bottom: 90px;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+/* Power aura */
+
+.aura {
+    position: absolute;
+    width: 330px;
+    height: 420px;
+    left: -55px;
+    top: 10px;
+    border-radius: 50%;
+    background: rgba(120, 0, 255, 0.2);
+    filter: blur(25px);
+    animation: aura 0.6s infinite alternate;
+}
+
+@keyframes aura {
+    from {
+        transform: scale(0.9);
+        opacity: 0.4;
+    }
+
+    to {
+        transform: scale(1.15);
+        opacity: 0.9;
+    }
+}
+
+/* Head */
+
+.head {
+    position: absolute;
+    width: 105px;
+    height: 115px;
+    left: 58px;
+    top: 15px;
+    z-index: 5;
+}
+
+.face {
+    position: absolute;
+    width: 90px;
+    height: 100px;
+    background: #f2b28d;
+    border-radius: 45% 45% 50% 50%;
+    top: 15px;
+    left: 8px;
+}
+
+/* Anime hair */
+
+.hair {
+    position: absolute;
+    width: 120px;
+    height: 90px;
+    left: -2px;
+    top: 0;
+    z-index: 3;
+    background: #111;
+
+    clip-path: polygon(
+        50% 0%,
+        65% 22%,
+        90% 5%,
+        78% 38%,
+        100% 30%,
+        78% 55%,
+        95% 70%,
+        65% 65%,
+        55% 100%,
+        45% 65%,
+        25% 90%,
+        30% 58%,
+        0% 65%,
+        20% 35%,
+        5% 15%,
+        35% 25%
+    );
+
+    animation: hairMove 0.4s infinite alternate;
+}
+
+@keyframes hairMove {
+    from {
+        transform: translateX(-2px);
+    }
+
+    to {
+        transform: translateX(4px);
+    }
+}
+
+/* Eyes */
+
+.eye {
+    position: absolute;
+    width: 20px;
+    height: 7px;
+    background: #111;
+    top: 55px;
+    border-radius: 50%;
+}
+
+.left-eye {
+    left: 18px;
+    transform: rotate(-10deg);
+}
+
+.right-eye {
+    right: 18px;
+    transform: rotate(10deg);
+}
+
+/* Body */
+
+.body {
+    position: absolute;
+    top: 120px;
+    left: 45px;
+    width: 130px;
+    height: 290px;
+}
+
+.chest {
+    position: absolute;
+    width: 110px;
+    height: 145px;
+    left: 10px;
+    background: #222;
+    clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+    border-radius: 20px;
+}
+
+/* Arms */
+
+.arm {
+    position: absolute;
+    width: 32px;
+    height: 130px;
+    background: #f2b28d;
+    border-radius: 20px;
+}
+
+.left-arm {
+    left: -15px;
+    top: 5px;
+    transform: rotate(35deg);
+}
+
+.right-arm {
+    right: -15px;
+    top: 5px;
+    transform: rotate(-35deg);
+}
+
+/* Legs */
+
+.leg {
+    position: absolute;
+    width: 42px;
+    height: 145px;
+    background: #181818;
+    top: 125px;
+    border-radius: 15px;
+}
+
+.left-leg {
+    left: 18px;
+    transform: rotate(5deg);
+}
+
+.right-leg {
+    right: 18px;
+    transform: rotate(-5deg);
+}
+
+/* Energy particles */
+
+.energy {
+    position: absolute;
+    width: 8px;
+    height: 70px;
+    background: #b94cff;
+    box-shadow: 0 0 20px #b94cff;
+    border-radius: 50%;
+    left: 50%;
+    bottom: 100px;
+    z-index: 2;
+    animation: energyMove 1.2s infinite;
+}
+
+.energy1 {
+    animation-delay: 0s;
+}
+
+.energy2 {
+    animation-delay: 0.2s;
+    margin-left: -80px;
+}
+
+.energy3 {
+    animation-delay: 0.4s;
+    margin-left: 80px;
+}
+
+.energy4 {
+    animation-delay: 0.6s;
+    margin-left: -130px;
+}
+
+.energy5 {
+    animation-delay: 0.8s;
+    margin-left: 130px;
+}
+
+@keyframes energyMove {
+    0% {
+        transform: translateY(80px) scale(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-300px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Power button */
+
+button {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 35px;
+    border: 2px solid #b94cff;
+    border-radius: 30px;
+    background: #160025;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px #8c35ff;
+    z-index: 20;
+}
+
+button:hover {
+    background: #8c35ff;
+    box-shadow: 0 0 40px #b94cff;
 }
