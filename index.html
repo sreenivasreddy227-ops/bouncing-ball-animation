@@ -1,21 +1,63 @@
-const button = document.getElementById("powerButton");
-const fighter = document.querySelector(".fighter");
-const aura = document.querySelector(".aura");
+<!DOCTYPE html>
+<html lang="en">
 
-button.addEventListener("click", function () {
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    fighter.style.transform = "translateX(-50%) scale(1.15)";
-    aura.style.background = "rgba(255, 80, 0, 0.5)";
+    <title>Anime Fighter</title>
 
-    button.innerHTML = "🔥 POWER MAX 🔥";
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    setTimeout(function () {
+<body>
 
-        fighter.style.transform = "translateX(-50%) scale(1)";
-        aura.style.background = "rgba(120, 0, 255, 0.2)";
+    <div class="scene">
 
-        button.innerHTML = "⚡ POWER UP ⚡";
+        <div class="title">
+            <h1>ANIME FIGHTER</h1>
+            <p>POWER UP</p>
+        </div>
 
-    }, 2000);
+        <div class="fighter">
 
-});
+            <div class="aura"></div>
+
+            <div class="head">
+                <div class="hair"></div>
+
+                <div class="face">
+                    <div class="eye left-eye"></div>
+                    <div class="eye right-eye"></div>
+                </div>
+            </div>
+
+            <div class="body">
+
+                <div class="arm left-arm"></div>
+                <div class="arm right-arm"></div>
+
+                <div class="chest"></div>
+
+                <div class="leg left-leg"></div>
+                <div class="leg right-leg"></div>
+
+            </div>
+
+        </div>
+
+        <div class="energy energy1"></div>
+        <div class="energy energy2"></div>
+        <div class="energy energy3"></div>
+        <div class="energy energy4"></div>
+        <div class="energy energy5"></div>
+
+        <button id="powerButton">⚡ POWER UP ⚡</button>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
