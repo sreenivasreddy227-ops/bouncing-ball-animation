@@ -1,21 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bouncing Ball Animation</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+const button = document.getElementById("powerButton");
+const fighter = document.querySelector(".fighter");
+const aura = document.querySelector(".aura");
 
-<body>
+button.addEventListener("click", function () {
 
-    <h1>Bouncing Ball</h1>
+    fighter.style.transform = "translateX(-50%) scale(1.15)";
+    aura.style.background = "rgba(255, 80, 0, 0.5)";
 
-    <div class="box">
-        <div class="ball"></div>
-    </div>
+    button.innerHTML = "🔥 POWER MAX 🔥";
 
-    <script src="script.js"></script>
+    setTimeout(function () {
 
-</body>
-</html>
+        fighter.style.transform = "translateX(-50%) scale(1)";
+        aura.style.background = "rgba(120, 0, 255, 0.2)";
+
+        button.innerHTML = "⚡ POWER UP ⚡";
+
+    }, 2000);
+
+});
